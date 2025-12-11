@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Papa</title>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Kalam:wght@300;400;700&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+        background: #fbeee5;
+        font-family: 'Poppins', sans-serif;
+        overflow-x: hidden;
+    }
+
+    /* Background clouds */
+    .clouds {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background: url('IMG_20141024_105208.jpg');
+        opacity: 0.35;
+        animation: moveClouds 60s linear infinite;
+        z-index: -10;
+    }
+
+    @keyframes moveClouds {
+        from { background-position: 0 0; }
+        to { background-position: -2000px 0; }
+    }
+
+    /* Header */
+    .header {
+        text-align: center;
+        padding: 90px 20px 150px;
+        background: linear-gradient(135deg, #ffecd2, #fcb69f);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .header h1 {
+        font-size: 3.8rem;
+        color: #7a4e36;
+        animation: fadeInDown 1.5s ease;
+    }
+
+    .header img {
+        width: 220px;
+        margin-top: 25px;
+        animation: floatImage 3s infinite ease-in-out;
+    }
+
+    @keyframes fadeInDown {
+        from { opacity: 0; transform: translateY(-50px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes floatImage {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-12px); }
+    }
+
+    /* Floating heart particles */
+    .heartParticle {
+        position: fixed;
+        color: #ff7b9c;
+        font-size: 20px;
+        animation: rise 6s infinite ease-out;
+        opacity: 0.75;
+    }
+
+    @keyframes rise {
+        0% { transform: translateY(0) scale(1); opacity: 0; }
+        30% { opacity: 1; }
+        100% { transform: translateY(-180px) scale(1.4); opacity: 0; }
+    }
+
+    /* Main message */
+    .message {
+        text-align: center;
+        padding: 90px 20px;
+        font-family: 'Kalam', cursive;
+        font-size: 2.1rem;
+        color: #4a3628;
+        line-height: 3rem;
+        max-width: 850px;
+        margin: auto;
+        animation: fadeIn 2s ease;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(40px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Photo gallery with spotlight glow */
+    .photos {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        flex-wrap: wrap;
+        padding: 60px 20px 110px;
+    }
+
+    .frame {
+        background: #fff;
+        padding: 18px;
+        border-radius: 20px;
+        box-shadow: 0px 12px 30px rgba(0,0,0,0.15);
+        width: 270px;
+        position: relative;
+        transition: 0.4s ease;
+    }
+
+    .frame:hover {
+        transform: scale(1.05);
+        box-shadow: 0px 0px 30px rgba(255,150,150,0.5);
+    }
+
+    .frame img {
+        width: 100%;
+        border-radius: 15px;
+    }
+
+    .caption {
+        text-align: center;
+        margin-top: 12px;
+        color: #5a4030;
+        font-size: 1.1rem;
+        font-weight: 600;
+    }
+
+    /* Hidden memory section (revealed by button) */
+    .memoryBox {
+        max-width: 800px;
+        margin: 40px auto;
+        background: #fff3e8;
+        padding: 30px 20px;
+        border-radius: 15px;
+        box-shadow: 0px 10px 25px rgba(0,0,0,0.1);
+        display: none;
+        animation: fadeIn 1s ease;
+        text-align: center;
+        font-family: 'Kalam', cursive;
+        font-size: 1.8rem;
+        color: #4a3628;
+        line-height: 2.6rem;
+    }
+
+    /* Reveal button */
+    .btn {
+        display: block;
+        margin: 40px auto 80px;
+        padding: 16px 40px;
+        border: none;
+        background: #ff9f82;
+        color: #fff;
+        font-size: 1.2rem;
+        border-radius: 35px;
+        cursor: pointer;
+        transition: .3s ease;
+    }
+
+    .btn:hover {
+        background: #ffb7a4;
+        transform: scale(1.05);
+    }
+
+    /* Confetti canvas */
+    #confetti {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        pointer-events: none;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="clouds"></div>
+
+<canvas id="confetti"></canvas>
+
+<!-- Header -->
+<div class="header">
+    <h1>Happy Birthday Papa ❤️</h1>
+    <img src="IMG_8913.JPG">
+</div>
+
+<!-- Floating heart particles -->
+<script>
+for (let i = 0; i < 15; i++) {
+    const heart = document.createElement("div");
+    heart.className = "heartParticle";
+    heart.textContent = "❤️";
+    heart.style.left = Math.random()*100 + "%";
+    heart.style.bottom = Math.random()*50 + "px";
+    heart.style.animationDelay = Math.random()*3 + "s";
+    document.body.appendChild(heart);
+}
+</script>
+
+<!-- Main message -->
+<div class="message">
+    Papa,  
+    your love has been the warmth of my world,  
+    your words have been my courage,  
+    and your presence has been my safest home.  
+    Today, on your special day,  
+    I celebrate YOU —  
+    the man who means everything to me. ❤️
+</div>
+
+<!-- Photos -->
+<div class="photos">
+    <div class="frame">
+        <img src="IMG_8913.JPG">
+        <div class="caption">My Guide</div>
+    </div>
+
+    <div class="frame">
+        <img src="IMG-20211213-WA0000.jpg">
+        <div class="caption">My Strength</div>
+    </div>
+
+    <div class="frame">
+        <img src="IMG_20141024_105208.jpg">
+        <div class="caption">My Happiness</div>
+    </div>
+</div>
+
+<!-- Hidden Memory Box -->
+<div id="memoryBox" class="memoryBox">
+    Papa, do you know what my favorite memory is?  
+    It’s every moment I spent holding your hand,  
+    learning from you,  
+    laughing with you,  
+    and growing because of you.  
+    Thank you for giving me a beautiful life. ❤️
+</div>
+
+<!-- Button -->
+<button class="btn" onclick="revealMemory(); confettiBlow();">
+    Reveal a Special Message 🎁
+</button>
+
+<script>
+/* Reveal memory box */
+function revealMemory() {
+    document.getElementById("memoryBox").style.display = "block";
+}
+
+/* Confetti */
+const canvas = document.getElementById("confetti");
+const ctx = canvas.getContext("2d");
+
+function resize() {
+    canvas.width = innerWidth;
+    canvas.height = innerHeight;
+}
+resize();
+onresize = resize;
+
+let confetti = [];
+function confettiBlow() {
+    for (let i = 0; i < 200; i++) {
+        confetti.push({
+            x: Math.random()*canvas.width,
+            y: -20,
+            size: Math.random()*7+3,
+            speed: Math.random()*3+2,
+            color: `hsl(${Math.random()*360}, 80%, 60%)`
+        });
+    }
+}
+
+function animate() {
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    confetti.forEach((p,i)=>{
+        p.y += p.speed;
+        ctx.fillStyle = p.color;
+        ctx.fillRect(p.x,p.y,p.size,p.size);
+        if (p.y > canvas.height) confetti.splice(i,1);
+    });
+    requestAnimationFrame(animate);
+}
+animate();
+</script>
+
+</body>
+</html>
